@@ -3,8 +3,11 @@ interface Reaction {
 }
 
 interface Config {
-    adminRole: string[];
-    slaveRole: string;
+    role: {
+        admin: string[];
+        slave: string;
+        member: string;
+    }
 
     reactions: Array<{
         reaction: string;

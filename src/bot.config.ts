@@ -1,8 +1,12 @@
 import { Config } from "./interface/config";
 
 export const config: Config = {
-    adminRole: ["1185947950275379270"],
-    slaveRole: "1386717587013898281", // 例として管理者ロールと同じIDを使用
+    role: {
+        admin: ["1185947950275379270"],
+        slave: "1386717587013898281",
+        member: "1185948268987957349"
+    },
+
 
     reactions: [
         {

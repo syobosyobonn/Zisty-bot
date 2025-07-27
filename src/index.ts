@@ -81,7 +81,8 @@ client.on("messageCreate", async (message) => { // 管理コマンドの実行
     if (message.author?.bot) return;
 
     const content = message.content.trim();
-    if (!content.startsWith("zis!")) return; // コマンドは「!」で始まると仮定
+    if (!content.startsWith("zis!")) return; // コマンドじゃなかったらスルー
+
     const args = content.slice(4).split(/ +/);
     const commandName = args.shift()?.toLowerCase();
     if (!commandName) return;
@@ -101,7 +102,7 @@ client.on("messageCreate", async (message) => { // 管理コマンドの実行
     }
 });
 
-client.on("interactionCreate", async (interaction) => { // コマンドの実行
+client.on("interactionCreate", async (interaction) => { // スラッシュコマンドの実行
     if (!interaction.isCommand()) return;
 
     const commandName = interaction.commandName;

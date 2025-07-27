@@ -47,13 +47,13 @@ client.once("ready", async () => {
         data.push(slashCommands[command].data);
     }
     try {
+        // Global commands registration for User Install Apps support
         await client.application?.commands.set(data as any);
+        console.log("Global commands registered successfully!");
     } catch (error) {
         console.error("Error registering commands: ", error);
         return;
     }
-
-    console.log("Commands registered successfully!");
 
     client.user?.setActivity("with the discord.js", { type: ActivityType.Playing });
     console.log("Bot is now playing with the discord.js!");
@@ -121,8 +121,20 @@ client.on("interactionCreate", async (interaction) => { // スラッシュコマ
         return;
     }
 
+    // User Install Apps対応: 一部コマンドはGuild contextでのみ利用可能
+    if (commandName === "slave" && !interaction.guild) {
+        const embed = new EmbedBuilder()
+            .setColor(Colors.Red)
+            .setTitle("サーバー限定コマンド")
+            .setDescription("このコマンドはサーバー内でのみ使用できます。")
+            .setTimestamp();
+
+        await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
+        return;
+    }
+
     await interaction.deferReply({ flags: command.data.flags });
-    console.log(`Executing command ${commandName}`);
+    console.log(`Executing command ${commandName} in ${interaction.guild ? `guild ${interaction.guild.name}` : 'DM'}`);
     await command.execute(interaction);
 });
 

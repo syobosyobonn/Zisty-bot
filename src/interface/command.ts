@@ -1,4 +1,4 @@
-import { CommandInteraction, ApplicationCommandOptionType } from "discord.js";
+import { CommandInteraction, ApplicationCommandOptionType, Message } from "discord.js";
 
 interface Command {
     data: {
@@ -26,9 +26,10 @@ interface Command {
                 value: string | number;
             }>;
         }>;
+        [key: string]: any; // 他のプロパティも許容
     };
 
-    execute: (interaction: CommandInteraction) => Promise<void>;
+    execute: (interaction: CommandInteraction | Message) => Promise<void>;
 }
 
 export type { Command };

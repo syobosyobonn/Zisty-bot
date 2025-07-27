@@ -1,5 +1,5 @@
 import { CommandInteraction, MessageFlags, EmbedBuilder, Colors } from "discord.js";
-import { Command } from "../interface/command";
+import { Command } from "../../interface/command";
 
 module.exports = {
     data: {

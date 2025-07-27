@@ -4,7 +4,7 @@
   "description": "Discord bot for team zisty",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "ts-node ./src/index.ts",
+    "dev": "ts-node ./src/index.ts",
     "start": "node ./build/index.js",
     "build": "tsc -p ."
   },

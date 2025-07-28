@@ -30,6 +30,6 @@ await startBot(bot);
 
 
 // Deno cron job to keep the bot active
-Deno.cron("KeepAwake", "*/1 * * * *", () => {
-  console.log("√ Bot is active again!");
-});
+// Deno.cron("KeepAwake", "*/1 * * * *", () => {
+//   console.log("√ Bot is active again!");
+// });

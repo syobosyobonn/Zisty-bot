@@ -9,19 +9,26 @@ export function registerTicketCommand(bot: Bot) {
         if (!message.guildId) return;
 
         const args = content.split(" ");
-        
+
         if (args[0] !== "?ticket") return;
-        const member = await bot.helpers.getMember(message.guildId, message.authorId);
+        const member = await bot.helpers.getMember(
+            message.guildId,
+            message.authorId,
+        );
         const memberRole = hasPermission(member);
 
-        await bot.helpers.sendMessage(message.channelId, {
-            content: `チケットシステムは現在開発中です。詳細は後日お知らせします。\nあなたの権限レベルは: ${memberRole}です。`,
-            messageReference: {
-                messageId: message.id,
-                channelId: message.channelId,
-                guildId: message.guildId,
-                failIfNotExists: false,
-            },
-        })
-    }
+        if (memberRole === "mod") {
+            await bot.helpers.sendMessage(message.channelId, {
+                content:
+                    `チケットシステムは現在開発中です。詳細は後日お知らせします。`,
+                messageReference: {
+                    messageId: message.id,
+                    channelId: message.channelId,
+                    guildId: message.guildId,
+                    failIfNotExists: false,
+                },
+            });
+            return;
+        }
+    };
 }

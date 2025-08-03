@@ -9,8 +9,17 @@ const bot = createBot({
     botId: BOT_ID,
     intents: Intents.Guilds | Intents.GuildMessages | Intents.MessageContent,
     events: {
-        ready: (_bot, payload) => {
+        ready: async (_bot, payload) => {
             console.log(`√ ${payload.user.username} is ready`);
+
+            const channel = await _bot.helpers.getChannel("1324788358404247714");
+            if (channel) {
+                await _bot.helpers.sendMessage(channel.id, {
+                    content: `Bot is online!`,
+                });
+            } else {
+                console.error("Channel not found");
+            }
         },
 
         guildMemberAdd: async (bot, member) => {

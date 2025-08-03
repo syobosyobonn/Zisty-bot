@@ -1,4 +1,4 @@
-import { dotEnvConfig } from "./deps.ts";
+import { dotEnvConfig, routes } from "./deps.ts";
 
 dotEnvConfig({ export: true });
 
@@ -9,3 +9,11 @@ if (!token) {
 
 export const BOT_TOKEN = token;
 export const BOT_ID = BigInt(atob(BOT_TOKEN.split(".")[0]));
+
+
+export const Config = {
+  role: {
+    mod: BigInt(1185947950275379270),
+    team: BigInt(1187750962694193243)
+  }
+}

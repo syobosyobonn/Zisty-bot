@@ -12,14 +12,9 @@ const bot = createBot({
         ready: async (_bot, payload) => {
             console.log(`√ ${payload.user.username} is ready`);
 
-            const channel = await _bot.helpers.getChannel("1324788358404247714");
-            if (channel) {
-                await _bot.helpers.sendMessage(channel.id, {
-                    content: `Bot is online!`,
-                });
-            } else {
-                console.error("Channel not found");
-            }
+            await _bot.helpers.sendMessage(1324788358404247714n, {
+                content: `Bot is online!`,
+            });
         },
 
         guildMemberAdd: async (bot, member) => {

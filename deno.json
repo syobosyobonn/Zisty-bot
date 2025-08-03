@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "start": "deno run --unstable-cron --allow-env --allow-import ./main.ts"
+    "start": "deno run --unstable-cron --allow-env --allow-read --allow-net --allow-write ./main.ts"
   },
   "imports": {
     "$std/": "https://deno.land/std@0.224.0/",

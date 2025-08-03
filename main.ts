@@ -1,7 +1,9 @@
 import { createBot, Intents, startBot } from "./deps.ts";
-import { BOT_ID, BOT_TOKEN } from "./configs.ts";
 import { registerPingCommand } from "./commands/ping.ts";
+import { registerTicketCommand } from "./commands/ticket.ts";
+import { BOT_ID, BOT_TOKEN } from "./configs.ts";
 
+// botのクライアント作成
 const bot = createBot({
     token: BOT_TOKEN,
     botId: BOT_ID,
@@ -20,10 +22,18 @@ const bot = createBot({
                 console.error("Guild Member Add Error:", error);
             }
         },
+
+        interactionCreate: async (bot, interaction) => {
+
+        }
     },
 });
 
+
+// コマンド一覧取得
 registerPingCommand(bot);
+registerTicketCommand(bot);
+
 console.log("√ Command registered");
 
 await startBot(bot);

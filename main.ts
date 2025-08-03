@@ -33,9 +33,6 @@ console.log("√ Command registered");
 
 await startBot(bot);
 
-await bot.helpers.sendMessage(1324788358404247714n, {
-  content: `Bot is online!`,
-});
 // Deno cron job to keep the bot active
 Deno.cron("KeepAwake", "*/3 * * * *", () => {
   console.log("√ Bot is active again!");

@@ -1,4 +1,5 @@
 import { Bot, Message } from "../deps.ts";
+import { hasPermission } from "../utils/check.ts";
 
 export function registerTicketCommand(bot: Bot) {
     bot.events.messageCreate = async (bot: Bot, message: Message) => {
@@ -10,9 +11,11 @@ export function registerTicketCommand(bot: Bot) {
         const args = content.split(" ");
         
         if (args[0] !== "?ticket") return;
+        const member = await bot.helpers.getMember(message.guildId, message.authorId);
+        const memberRole = hasPermission(member);
 
         await bot.helpers.sendMessage(message.channelId, {
-            content: "チケットシステムは現在開発中です。詳細は後日お知らせします。",
+            content: `チケットシステムは現在開発中です。詳細は後日お知らせします。\nあなたの権限レベルは: ${memberRole}です。`,
             messageReference: {
                 messageId: message.id,
                 channelId: message.channelId,

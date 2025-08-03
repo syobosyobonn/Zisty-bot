@@ -26,10 +26,6 @@ const bot = createBot({
                 console.error("Guild Member Add Error:", error);
             }
         },
-
-        interactionCreate: async (bot, interaction) => {
-
-        }
     },
 });
 

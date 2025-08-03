@@ -5,7 +5,6 @@ type PermissionLevel = "mod" | "team" | "member";
 
 export function hasPermission(member: Member): PermissionLevel | null {
     const memberRoles: BigInt[] = member.roles || [];
-    console.log("Member Roles:", memberRoles);
 
     if (memberRoles.includes(Config.role.mod)) {
         return "mod";

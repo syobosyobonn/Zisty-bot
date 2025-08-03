@@ -13,7 +13,7 @@ export const BOT_ID = BigInt(atob(BOT_TOKEN.split(".")[0]));
 
 export const Config = {
   role: {
-    mod: BigInt(1185947950275379270),
-    team: BigInt(1187750962694193243)
+    mod: 1185947950275379270n,
+    team: 1187750962694193243n
   }
 }

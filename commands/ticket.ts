@@ -19,14 +19,7 @@ export function registerTicketCommand(bot: Bot) {
 
         if (memberRole === "mod") {
             await bot.helpers.sendMessage(message.channelId, {
-                content:
-                    `チケットシステムは現在開発中です。詳細は後日お知らせします。`,
-                messageReference: {
-                    messageId: message.id,
-                    channelId: message.channelId,
-                    guildId: message.guildId,
-                    failIfNotExists: false,
-                },
+                content: `チケットシステムは現在開発中です。詳細は後日お知らせします。`,
             });
             return;
         }

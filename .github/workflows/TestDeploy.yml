@@ -16,6 +16,10 @@ jobs:
         with:
           deno-version: v2.x
 
+      - name: add permisson
+        run: sudo chmod +x /actions-runner/Testrunner/_work/Zisty-bot/Zisty-bot/runbot.sh
+        shell: bash
+      
       - name: restart service
         run: sudo systemctl restart actions.runner.syobosyobonn-Zisty-bot.Testrunner.bot.service
         shell: bash

@@ -23,3 +23,10 @@ jobs:
       - name: restart service
         run: sudo systemctl restart actions.runner.syobosyobonn-Zisty-bot.Testrunner.bot.service
         shell: bash
+
+      - name: Check service status
+        run: |
+          sudo systemctl status actions.runner.syobosyobonn-Zisty-bot.Testrunner.bot.service --no-pager -l
+          echo "--- Last 20 log lines ---"
+          sudo journalctl -u actions.runner.syobosyobonn-Zisty-bot.Testrunner.bot.service -n 20 --no-pager
+        shell: bash

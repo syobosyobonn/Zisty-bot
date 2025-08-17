@@ -11,10 +11,10 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
         
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+      #- name: Install Deno
+      #  uses: denoland/setup-deno@v2
+      #  with:
+      #    deno-version: v2.x
 
       - name: add permisson
         run: sudo chmod +x /actions-runner/Testrunner/_work/Zisty-bot/Zisty-bot/runbot.sh
